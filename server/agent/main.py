@@ -92,8 +92,6 @@ def assistant(state: State) -> State:
     # Create a proper SystemMessage
     system_msg = SystemMessage(content=system_content) if system_content else None
     
-    print(f"System message: {system_msg}")
-    
     # Invoke LLM with tools
     if system_msg:
         response = llm_with_tools.invoke([system_msg] + state["messages"])

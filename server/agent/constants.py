@@ -2,15 +2,15 @@ from pathlib import Path
 
 # Marcas soportadas
 SUPPORTED_BRANDS = {
-    "apple": "modelo_apple.json",
-    "samsung": "modelo_samsung.json",
-    "xiaomi": "modelo_xiaomi.json",
-    "google": "modelo_google.json",
-    "honor": "modelo_honor.json",
-    "huawei": "modelo_huawei.json",
-    "motorola": "modelo_motorola.json",
-    "oneplus": "modelo_oneplus.json",
-    "oppo": "modelo_oppo.json"
+    "apple": "modelo_apple.bin",
+    "samsung": "modelo_samsung.bin",
+    "xiaomi": "modelo_xiaomi.bin",
+    "google": "modelo_google.bin",
+    "honor": "modelo_honor.bin",
+    "huawei": "modelo_huawei.bin",
+    "motorola": "modelo_motorola.bin",
+    "oneplus": "modelo_oneplus.bin",
+    "oppo": "modelo_oppo.bin"
 }
 
 # Mapeo de grados

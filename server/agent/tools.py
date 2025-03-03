@@ -105,24 +105,13 @@ def predict_price(
             "GB", "").replace("TB", "000").strip())
         print("Storage GB:", Almacenamiento)
 
-        # Obtener día de la semana (0=lunes, 6=domingo)
-        dia_semana = sale_date.weekday()
-        print("Day of week:", dia_semana)
-
-        # Obtener mes (1-12)
-        mes = sale_date.month
-        print("mes:", mes)
-
-        # Obtener día del año (1-366)
-        Dia_año = sale_date.timetuple().tm_yday
-        print("Day of year:", Dia_año)
 
         # Mapear grado a número
         Grado = GRADE_MAPPING.get(grade, 3)  # Por defecto C=3
         print("Grade:", Grado)
 
         features = np.array([[
-            Modelo, Almacenamiento, fecha_lanzamiento, dia_semana, mes, Dia_año, Grado
+            Modelo, Almacenamiento, fecha_lanzamiento, Grado
         ]])
 
         # Predicción
