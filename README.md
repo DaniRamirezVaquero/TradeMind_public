@@ -124,6 +124,9 @@ http://localhost:4200
 - [ ] Sistema de usuarios
 - [ ] PWA support
 
+### Recursos utilizandos
+Dado que los datos empleados en el entrenamiento de los modelos son propiedad de una empresa externa ([Aliqindoi](https://aliqindoi.com/)), no podemos compartirlos públicamente.
+
 ## Enlace video referencia
 [Ver video](https://www.youtube.com/watch?v=aFz_R7vci3I)
 
