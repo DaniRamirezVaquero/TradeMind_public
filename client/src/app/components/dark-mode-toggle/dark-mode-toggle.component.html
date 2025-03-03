@@ -1,0 +1,5 @@
+<p-toggleswitch [(ngModel)]="checked" onLabel="Dark" offLabel="Light" (click)="toggleDarkMode()" >
+  <ng-template #handle let-checked="checked">
+      <i [ngClass]="['!text-xs', 'pi', checked ? 'pi-moon' : 'pi-sun']"></i>
+  </ng-template>
+</p-toggleswitch>

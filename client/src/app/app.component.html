@@ -1,0 +1,86 @@
+<div id="app-container" class="grid grid-cols-12 grid-rows-15 gap-3 h-dvh pb-8 relative overflow-hidden">
+  <!-- Header -->
+  <app-header class="col-span-12 z-10" [isDrawerOpen]="isDrawerOpen">
+    <!-- Toggle button to be projected into header -->
+    <p-button
+      #toggleButton
+      (click)="toggleDrawer()"
+      icon="pi pi-bars"
+      styleClass="p-button-text p-button-rounded"
+      [class.rotate-180]="isDrawerOpen">
+    </p-button>
+  </app-header>
+
+  <!-- Chat list drawer -->
+  <div
+    class="absolute left-0 top-16 h-[calc(100vh-4rem)] w-72 transform transition-all duration-300 ease-in-out bg-surface-800 backdrop-blur-md rounded-tr-2xl shadow-lg z-10 overflow-hidden"
+    [class.translate-x-0]="isDrawerOpen"
+    [class.-translate-x-full]="!isDrawerOpen">
+    <app-chat-list
+      class="h-full block"
+      [chats]="chats"
+      [selectedChatId]="currentChatId"
+      (chatSelected)="selectChat($event)"
+      (newChatRequested)="createNewChat()"
+      (chatDeleted)="deleteChat($event)"
+      (chatRenamed)="renameChat($event)">
+    </app-chat-list>
+  </div>
+
+  <!-- Main content area with responsive width -->
+  <main
+  id="main-content"
+  class="col-span-8 col-start-3 row-span-14 row-start-2 transition-all duration-300 ease-in-out flex transform"
+  [ngStyle]="{
+    'transform': isDrawerOpen ? 'translateX(calc(140px))' : 'translateX(0)'
+  }">
+  <app-chat
+    class="h-full w-full"
+    [currentChatId]="editingChatId || currentChatId">
+  </app-chat>
+</main>
+
+<!-- Añadir estos elementos al final del template, justo antes del cierre del div app-container -->
+
+<!-- Diálogo para editar título (nuevo) -->
+<p-dialog
+header="Editar título"
+[(visible)]="displayTitleEditDialog"
+[modal]="true"
+[draggable]="false"
+[resizable]="false"
+[style]="{width: '350px'}"
+[baseZIndex]="10000"
+[closeOnEscape]="true"
+styleClass="edit-title-dialog">
+<div class="p-fluid">
+  <div class="field">
+    <span class="p-float-label">
+      <input
+        pInputText
+        id="titleInput"
+        type="text"
+        [(ngModel)]="editedChatTitle"
+        autofocus
+        class="w-full" />
+    </span>
+  </div>
+</div>
+<ng-template pTemplate="footer">
+  <p-button
+    icon="pi pi-check"
+    (click)="confirmTitleEdit()"
+    [disabled]="!editedChatTitle.trim()">
+  </p-button>
+</ng-template>
+</p-dialog>
+
+<p-confirmDialog
+  [style]="{width: '450px'}"
+  [baseZIndex]="10000"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+
+<p-toast position="top-right"></p-toast>
+</div>

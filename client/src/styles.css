@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@plugin 'tailwindcss-primeui';
+@plugin "@tailwindcss/typography";
+@layer tailwind, primeng;
+
+@config "../tailwind.config.js";
+
+
+@layer tailwind {
+  @import 'tailwindcss';
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: currentColor;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

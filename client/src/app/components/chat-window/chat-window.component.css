@@ -1,0 +1,59 @@
+:host ::ng-deep #chat-window-container {
+  position: relative;
+}
+
+:host ::ng-deep #chat-window-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgb(39, 39, 42) 30%,
+    rgba(255, 0, 0, 0) 100%
+  );
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+:host ::ng-deep .p-scrollpanel-content {
+  z-index: 0;
+}
+
+:host ::ng-deep .p-scrollpanel-wrapper {
+  z-index: 1;
+}
+
+:host ::ng-deep p-chart canvas {
+  height: 400px !important;
+}
+
+/* Animaciones para el indicador de escritura */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-bounce1 {
+  animation: bounce 1.2s infinite 0s;
+}
+
+.animate-bounce2 {
+  animation: bounce 1.2s infinite 0.2s;
+}
+
+.animate-bounce3 {
+  animation: bounce 1.2s infinite 0.4s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40% { transform: translateY(-5px); opacity: 1; }
+}

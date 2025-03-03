@@ -1,0 +1,35 @@
+/* Estilos para el diálogo de edición */
+:host ::ng-deep .edit-title-dialog .p-dialog-header {
+  background-color: var(--surface-800);
+  color: white;
+  padding: 1rem;
+  border-bottom: 1px solid var(--surface-700);
+}
+
+:host ::ng-deep .edit-title-dialog .p-dialog-content {
+  background-color: var(--surface-800);
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+:host ::ng-deep .edit-title-dialog .p-dialog-footer {
+  background-color: var(--surface-800);
+  color: white;
+  border-top: 1px solid var(--surface-700);
+  padding: 0.75rem 1rem;
+}
+
+:host ::ng-deep .edit-title-dialog .p-inputtext {
+  background-color: var(--surface-700);
+  color: white;
+  border-color: var(--surface-600);
+}
+
+:host ::ng-deep .edit-title-dialog .p-float-label label {
+  color: var(--surface-300);
+}
+
+:host ::ng-deep .edit-title-dialog .p-float-label input:focus ~ label,
+:host ::ng-deep .edit-title-dialog .p-float-label input.p-filled ~ label {
+  color: var(--primary-400);
+}

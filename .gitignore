@@ -1,0 +1,9 @@
+.venv
+.env
+node_modules
+server/.env
+server/sessions.db
+**/__pycache__/
+agent.ipynb
+**/.pytest_cache/
+server/env

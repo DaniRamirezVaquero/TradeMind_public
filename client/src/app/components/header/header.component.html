@@ -1,0 +1,50 @@
+<div class="flex items-center justify-between p-4 w-full">
+  <!-- Área izquierda para el botón de toggle del drawer -->
+  <div class="flex-none">
+    <ng-content></ng-content>
+  </div>
+
+  <!-- Área central para el título del chat activo -->
+  <!-- Área central para el título del chat activo -->
+  <div class="flex-grow flex items-center cursor-default transition-all duration-300 ease-in-out" [ngClass]="{
+      'ml-[calc(16.67%-1rem)]': !isDrawerOpen,
+      'ml-[calc(16.67%+7rem)]': isDrawerOpen
+    }">
+    @if (currentChatTitle) {
+    <h1
+      class="text-lg font-medium text-surface-50 truncate max-w-[60vw] relative group pb-1 transition-all duration-300 border-b border-primary-500/50 hover:border-primary-500">
+      @if (animateTitle) {
+      <span [appTypewriter]="currentChatTitle" [typeSpeed]="50"
+        class="inline-block relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-400 group-hover:after:w-full after:transition-all after:duration-300"></span>
+      } @else {
+      <span class="inline-block relative">{{ currentChatTitle }}</span>
+      }
+    </h1>
+    }
+  </div>
+
+  <!-- Área derecha para el logo y controles -->
+  <div class="flex items-center gap-4">
+    <app-dark-mode-toggle class="hidden"></app-dark-mode-toggle>
+    <button #trademindButton (click)="toggleCustomPopover($event)"
+      class="cursor-pointer audiowide-regular text-xl text-surface-900 bg-gradient-to-r from-primary-500 to-blue-400 px-3 py-1 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary-500/30 flex items-center gap-2">
+      <span>TradeMind</span>
+      <span
+        class="text-xs bg-white/20 rounded-full w-5 h-5 flex items-center justify-center font-sans font-semibold">?</span>
+    </button>
+  </div>
+</div>
+<!-- Popover personalizado -->
+<div
+  *ngIf="isCustomPopoverVisible"
+  [@popoverAnimation]
+  class="custom-popover fixed z-50 backdrop-blur-md bg-surface-800/60 border border-primary-500/20 shadow-lg shadow-primary-500/10 rounded-lg p-5 max-w-md prose prose-invert prose-headings:text-primary-400 prose-a:text-blue-400"
+  [style.top.px]="popoverPosition.top"
+  [style.left.px]="popoverPosition.left"
+>
+  <!-- Flecha personalizada -->
+  <div class="custom-arrow"></div>
+
+  <!-- Contenido -->
+  <markdown [data]="popoverContent"></markdown>
+</div>

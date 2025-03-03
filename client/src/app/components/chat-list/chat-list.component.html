@@ -1,0 +1,89 @@
+<div class="flex flex-col h-full">
+  <!-- Header del drawer -->
+  <div
+    class="flex-none p-4 flex justify-between items-center border-b border-surface-600/40"
+  >
+    <h2 class="text-lg font-semibold">Mis Conversaciones</h2>
+    <p-button
+      icon="pi pi-plus"
+      (click)="createNewChat()"
+      styleClass="p-button-rounded p-button-text"
+      pTooltip="Nueva conversación"
+      tooltipPosition="bottom"
+    >
+    </p-button>
+  </div>
+
+  <!-- Lista de chats con overflow nativo y estilización mejorada -->
+  <div class="flex-grow overflow-y-auto pr-1 custom-scrollbar">
+    @if (isBackendInitializing){
+      <div class="flex flex-col items-center justify-center h-64 w-full gap-3 py-8">
+        <p-progressSpinner [style]="{ width: '40px', height: '40px' }" strokeWidth="4" animationDuration="1s" />
+        <p class="text-sm text-surface-400">Cargando conversaciones...</p>
+      </div>
+    } @else {
+      <div class="pt-2">
+        @for (chat of chats; track chat.id; let i = $index) {
+        <div
+          class="chat-item flex flex-col gap-1 p-3 cursor-pointer transition-all duration-200 border-l-4 hover:bg-black/10 overflow-hidden"
+          [class.active-chat]="chat.id === selectedChatId"
+          [class.token-limited]="isChatTokenLimited(chat.id)"
+          [class.border-primary-500]="chat.id === selectedChatId"
+          [class.border-transparent]="chat.id !== selectedChatId"
+          [style.--index]="i"
+          (click)="selectChat(chat.id)"
+          pRipple
+        >
+          <div class="flex justify-between items-center w-full">
+            <h3 class="text-sm font-medium truncate flex-grow max-w-[75%]">
+              @if (isTitleAnimating(chat.id)) {
+                <span [appTypewriter]="chat.title"></span>
+              } @else {
+                {{ chat.title }}
+              }
+            </h3>
+            <span class="text-xs text-surface-300 flex-shrink-0 ml-1">{{
+              formatDate(chat.createdAt)
+            }}</span>
+          </div>
+
+          <p class="text-xs text-surface-400 truncate w-full">
+            {{ chat.previewText || "Nueva conversación" }}
+          </p>
+
+          <div
+            class="chat-actions opacity-0 transition-opacity flex justify-end gap-1 mt-1 w-full"
+          >
+            <p-button
+              icon="pi pi-pencil"
+              (click)="editChatTitle($event, chat.id)"
+              rounded="true"
+              text="true"
+              size="small"
+              pTooltip="Editar título"
+              tooltipPosition="bottom"
+            >
+            </p-button>
+
+            <p-button
+              icon="pi pi-trash"
+              (click)="deleteChat($event, chat.id)"
+              rounded="true"
+              text="true"
+              size="small"
+              severity="danger"
+              pTooltip="Eliminar conversación"
+              tooltipPosition="bottom"
+            >
+            </p-button>
+          </div>
+        </div>
+        } @if (chats.length === 0) {
+        <div class="p-4 text-center text-sm text-surface-400">
+          No hay conversaciones. Inicia una nueva haciendo clic en el botón +
+        </div>
+        }
+      </div>
+    }
+  </div>
+</div>

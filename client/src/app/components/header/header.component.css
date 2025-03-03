@@ -1,0 +1,95 @@
+.audiowide-regular {
+  font-family: "Audiowide", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Personalización de los estilos Markdown */
+:host ::ng-deep .prose h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(to right, #8c62ff, #4a98ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+:host ::ng-deep .prose h2 {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  color: #c7b3ff;
+}
+
+:host ::ng-deep .prose ul {
+  margin-top: 0.5rem;
+}
+
+:host ::ng-deep .prose li {
+  margin-top: 0.25rem;
+}
+
+:host ::ng-deep .prose strong {
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+/* Animación de entrada para el popover */
+:host ::ng-deep .p-popover.p-component {
+  animation: popoverFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes popoverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Estilos para el popover personalizado */
+.custom-popover {
+  transform-origin: top center;
+  width: 25rem;
+  max-width: calc(100vw - 2rem);
+  overflow: hidden;
+}
+
+/* Flecha del popover personalizado */
+.custom-arrow {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 10px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(140, 98, 255, 0.2);
+  z-index: 1;
+}
+
+/* Sombra de la flecha */
+.custom-arrow::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 8px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(30, 41, 59, 0.8);
+  z-index: 0;
+}
+
+/* Ajuste de márgenes para headings en markdown */
+:host ::ng-deep .prose h3 {
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important;
+  font-size: 1.2rem;
+  color: #c7b3ff;
+}

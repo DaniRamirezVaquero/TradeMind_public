@@ -1,0 +1,39 @@
+<div
+  id="chat-input-container"
+  class="flex gap-3 rounded-xl bg-surface-800 p-4"
+>
+  @if (isTokenLimited) {
+    <div class="flex items-center justify-center w-full px-4 py-2 bg-red-500/10 border border-red-600 rounded-lg">
+      <p class="text-red-400">
+        <i class="pi pi-exclamation-triangle mr-2"></i>
+        Esta conversación ha alcanzado el límite. Por favor, crea una nueva conversación.
+      </p>
+    </div>
+  } @else if(isBackendInitializing) {
+    <div class="flex items-center justify-center w-full px-4 py-2 bg-blue-500/10 border border-blue-400 rounded-lg">
+      <p class="text-blue-300">
+        <i class="pi pi-spin pi-spinner mr-2"></i>
+        Esperando a que el servidor se inicie. Por favor, espera un momento...
+      </p>
+    </div>
+  } @else {
+    <textarea
+      pTextarea
+      [autoResize]="true"
+      name="humanInput"
+      id="humanInput"
+      fluid="true"
+      class="min-h-[44px] max-h-52 h-full flex-1"
+      [(ngModel)]="message"
+      [disabled]="isTokenLimited"
+      (keydown)="onKeyDown($event)"
+    ></textarea>
+    <p-button
+      icon="pi pi-send"
+      rounded="true"
+      variant="text"
+      aria-label="Send"
+      [disabled]="!message || isLoading || isTokenLimited"
+      (click)="sendMessage()"/>
+  }
+</div>
