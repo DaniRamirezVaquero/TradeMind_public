@@ -14,8 +14,6 @@ TradeMind es una aplicación web que implementa una red multiagente especializad
 ### Interfaz de Usuario 💻
 - Chat interactivo en tiempo real
 - Visualización de datos y gráficos
-- Diseño responsive
-- Tema claro/oscuro
 
 ## Tecnologías Utilizadas 🛠️
 
@@ -125,6 +123,9 @@ http://localhost:4200
 - [ ] Base de datos de dispositivos
 - [ ] Sistema de usuarios
 - [ ] PWA support
+
+## Enlace video referencia
+[Ver video](https://www.youtube.com/watch?v=aFz_R7vci3I)
 
 ## Licencia 📄
 Este proyecto está bajo la Licencia MIT 
